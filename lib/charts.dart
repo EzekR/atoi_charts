@@ -13,7 +13,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:intl/intl.dart' show NumberFormat;
 import 'package:vector_math/vector_math.dart' as vector;
-import 'package:syncfusion_flutter_core/core.dart';
 
 // export circular library
 part './src/circular_chart/base/circular_base.dart';
