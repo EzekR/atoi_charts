@@ -2020,19 +2020,6 @@ class _ContainerArea extends StatelessWidget {
     final _ZoomRectPainter zoomRectPainter = _ZoomRectPainter(chart: chart);
     chart.zoomPanBehavior._painter = zoomRectPainter;
 
-    if (chart.tooltipBehavior.enable) {
-      if (chart.tooltipBehavior.builder != null) {
-        chart.tooltipBehavior._tooltipTemplate = _TooltipTemplate(
-            show: false, clipRect: chart._chartAxis._axisClipRect);
-        _chartWidgets.add(chart.tooltipBehavior._tooltipTemplate);
-      } else {
-        _chartWidgets.add(Container(
-            height: constraints.maxHeight,
-            width: constraints.maxWidth,
-            decoration: const BoxDecoration(color: Colors.transparent),
-            child: CustomPaint(painter: tooltipPainter)));
-      }
-    }
     if (chart.trackballBehavior != null && chart.trackballBehavior.enable) {
       trackballPainter = _TrackballPainter(
           chart: chart,
@@ -2105,6 +2092,20 @@ class _ContainerArea extends StatelessWidget {
                 height: constraints.maxHeight,
                 width: constraints.maxWidth,
                 decoration: const BoxDecoration(color: Colors.transparent)))));
+    // tooltip first! MAGA!
+    if (chart.tooltipBehavior.enable) {
+      if (chart.tooltipBehavior.builder != null) {
+        chart.tooltipBehavior._tooltipTemplate = _TooltipTemplate(
+            show: false, clipRect: chart._chartAxis._axisClipRect);
+        _chartWidgets.add(chart.tooltipBehavior._tooltipTemplate);
+      } else {
+        _chartWidgets.add(Container(
+            height: constraints.maxHeight,
+            width: constraints.maxWidth,
+            decoration: const BoxDecoration(color: Colors.transparent),
+            child: CustomPaint(painter: tooltipPainter)));
+      }
+    }
   }
 
   /// Find point index for selection
