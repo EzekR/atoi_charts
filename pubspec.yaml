@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ">=0.15.0 <0.17.0"
+  intl: ">=0.15.0"
   vector_math: ^2.0.8
 
 flutter:
